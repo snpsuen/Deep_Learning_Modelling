@@ -1,7 +1,7 @@
 import tensorflow as tf
 from tensorflow import keras
 from numpy import asarray
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for
 
 app = Flask(__name__)
 model = tf.keras.models.load_model("./rnn_sales_timeseries_model")
