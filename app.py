@@ -1,7 +1,7 @@
 import tensorflow as tf
 import pickle
 from tensorflow import keras
-from numpy import asarray
+from numpy import asarray, argmax
 from flask import Flask, render_template, request, url_for
 
 app = Flask(__name__)
