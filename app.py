@@ -5,6 +5,9 @@ from flask import Flask, render_template, request, url_for
 
 app = Flask(__name__)
 model = tf.keras.models.load_model("./mlp_iris_multiple_class_model")
+fd = open('./mlp_iris_encoder.pkl', 'rb')
+le = pickle.load(fd) 
+fd.close()
 
 @app.route('/')
 def home():
@@ -23,4 +26,5 @@ def mlp_iris_prediction():
       characteristics.append(feature)
 
     yhat = model.predict(characteristics)
-    return render_template('mlp_iris_result.html', features=characteristics, predicted=yhat)
+    classhat = le.inverse_transform([argmax(yhat)])
+    return render_template('mlp_iris_result.html', features=characteristics, predictprob=yhat, predictclass=classhat)
