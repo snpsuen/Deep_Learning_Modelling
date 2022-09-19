@@ -75,3 +75,6 @@ print('Prediction for %s = %s (class = %s)' % (row, yhat, predicted))
 # save the model
 model.save("./mlp_iris_multiple_class_model")
 print('Model saved as mlp_iris_multiple_class_model')
+fd = open('./mlp_iris_encoder.pkl', 'wb')
+pickle.dump(le, fd)
+fd.close()
