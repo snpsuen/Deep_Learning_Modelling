@@ -26,13 +26,16 @@ df = read_csv(path, header=None)
 X, y = df.values[:, :-1], df.values[:, -1]
 # ensure all data are floating point values
 X = X.astype('float32')
+
 # enumerate the classification strings for the output
 le = preprocessing.LabelEncoder()
 le.fit(y)
 print("le.classes_=%s" % (le.classes_))
+
 # encode the output strings to integers
 y = le.transform(y)
 # y = LabelEncoder().fit_transform(y)
+
 # split into train and test datasets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33)
 print("X_train.shape=%s, X_test.shape=%s, y_train.shape=%s, y_test.shape=%s" %(X_train.shape, X_test.shape, y_train.shape, y_test.shape))
@@ -69,4 +72,4 @@ print('Prediction for %s = %s (class = %s)' % (row, yhat, predicted))
 
 # save the model
 model.save("./mlp_iris_multiple_class_model")
-print('Model saved as rnmlp_iris_multiple_class_model')
+print('Model saved as mlp_iris_multiple_class_model')
