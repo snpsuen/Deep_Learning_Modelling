@@ -26,6 +26,6 @@ def mlp_iris_prediction():
       feature = float(request.form.get(label))
       characteristics.append(feature)
 
-    yhat = model.predict(characteristics)
+    yhat = model.predict([characteristics])
     classhat = le.inverse_transform([argmax(yhat)])
     return render_template('mlp_iris_result.html', features=characteristics, predictprob=yhat, predictclass=classhat)
