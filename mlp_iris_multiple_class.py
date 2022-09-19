@@ -9,6 +9,7 @@ Original file is located at
 
 # mlp for multiclass classification
 import sys
+import pickle
 from numpy import argmax
 from pandas import read_csv
 from sklearn.model_selection import train_test_split
@@ -67,7 +68,8 @@ print('Test Accuracy: %.3f' % acc)
 # make a prediction
 row = [5.1,3.5,1.4,0.2]
 yhat = model.predict([row])
-predicted = le.classes_[argmax(yhat)]
+# predicted = le.classes_[argmax(yhat)]
+predicted = le.inverse_transform([argmax(yhat)])
 print('Prediction for %s = %s (class = %s)' % (row, yhat, predicted))
 
 # save the model
