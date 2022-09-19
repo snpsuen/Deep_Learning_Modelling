@@ -21,7 +21,7 @@ def mlp_iris_home():
 def mlp_iris_prediction():
   if request.method == 'POST':
     characteristics=[]
-    for label in ["sepallength", "sepalwidth", "petallength", "petalwidth"]
+    for label in ["sepallength", "sepalwidth", "petallength", "petalwidth"]:
       feature = float(request.form.get(label))
       characteristics.append(feature)
 
