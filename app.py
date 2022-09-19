@@ -18,9 +18,9 @@ def mlp_iris_home():
 def mlp_iris_prediction():
   if request.method == 'POST':
     characteristics=[]
-    for feature in ["sepallength", "sepalwidth", "petallength", "petalwidth"]
-      result = float(request.form.get(feature))
-      characteristics.append(result)
+    for label in ["sepallength", "sepalwidth", "petallength", "petalwidth"]
+      feature = float(request.form.get(label))
+      characteristics.append(feature)
 
-    yhat = model.predict(row)
-    return render_template('result.html', result=yhat)
+    yhat = model.predict(characteristics)
+    return render_template('mlp_iris_result.html', features=characteristics, predicted=yhat)
